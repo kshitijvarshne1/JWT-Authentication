@@ -18,6 +18,14 @@ app.get("/getAllUsers", (req, res) => {
   res.send(users);
 });
 
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const user = users.find((user) => user.username == username);
+  if (user == null) {
+    res.send({ status: "user not found" });
+  }
+});
+
 app.listen(3000, () => {
   console.log("server is running on 3000");
 });
